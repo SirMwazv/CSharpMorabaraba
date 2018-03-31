@@ -10,11 +10,13 @@ namespace Morabaraba2.Data
     {
         public Player current, opponent;
         public enum Phase {Placing , Moving, Won, Draw }
+        public ConsoleColor defaultColor;
         
         public GameState()
         {
             current = new Player("1", ConsoleColor.DarkMagenta);
             opponent = new Player("2", ConsoleColor.DarkGreen);
+            defaultColor = ConsoleColor.Gray;
         }
     }
 }

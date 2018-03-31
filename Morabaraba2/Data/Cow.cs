@@ -8,7 +8,7 @@ namespace Morabaraba2.Data
 {
     class Cow
     {
-        public string state;
+        public string state; //state of cow e.g Flying, OnBoard etc.
         public Position pos;
 
         public Cow(string state, Position pos)

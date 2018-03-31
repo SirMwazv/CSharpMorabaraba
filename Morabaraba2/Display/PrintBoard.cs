@@ -5,21 +5,73 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Morabaraba2.Data;
+using static Morabaraba2.Data.Position;
 
 namespace Morabaraba2.Display
 {
     class PrintBoard
     {
-        List<Cow> CowList;
+        List<Cow> CowList1; //list of cows for player 1
+        List<Cow> CowList2; //list of cows for player 2
 
+        /// <summary>
+        /// Function to print the board to the console 
+        /// </summary>
+        /// <param name="state">Game State variable holding all necesarry data about the game</param>
         public PrintBoard(GameState state)
         {
-            CowList.Clear();
-            CowList.AddRange(state.current.Cows);
-            CowList.AddRange(state.current.Cows);
-            
+            CowList1 = state.current.Cows;
+            CowList2 = state.opponent.Cows;
+
+            /// Takes a position and returns the correct color to print it in. 
+            ConsoleColor myColor(Position pos)
+            {
+                //iterate through current players cows
+                for (int i = 0; i < CowList1.Count; i++)
+                {
+                    if (CowList1[i].pos == pos)
+                        return state.current.playerColor;   //cow found return color
+                }
+
+                //iterate through opponent players cows
+                for (int i = 0; i < CowList2.Count; i++)
+                {
+                    if (CowList2[i].pos == pos)
+                        return state.opponent.playerColor;  //cow found return color
+                }               
+
+                return state.defaultColor;   //else return default console color
+            }
+
+            //takes a position and prints it to console in the correct color
+            void P(Position pos)
+            {
+                Console.ForegroundColor = myColor(pos);
+                Console.Write(String.Format("{0}",pos));
+            }
+
+            void B(string board)
+            {
+                Console.ForegroundColor = state.defaultColor;
+                Console.Write(String.Format("{0}", board));
+            }
 
             //TODO: Rest of Print Board Function. Figure out way of efficiently printing the board 
+
+            P(A7); B("----------"); P(D7); B("----------"); P(G7);
+            B("\n| `.        |         /' |");
+            B("\n|   "); P(B6); B("------"); P(D6); B("------"); P(F6); B("   |");
+            B("\n|   | `.     |    /' |   |");
+            B("\n|   |   "); P(C5); B("--"); P(D5); B("--"); P(E5); B("   |   |");
+            B("\n|   |   |        |   |   |");
+            B("\n"); P(A4); B("--"); P(B4); B("--"); P(C4); B("      "); P(E4); B("--"); P(F4); B("--"); P(G4);
+            B("\n|   |   |        |   |   |");
+            B("\n|   |   "); P(C3); B("--"); P(D3); B("--"); P(E3); B("   |   |");
+            B("\n|   | /'    |     `. |   |");
+            B("\n|   "); P(B2); B("------"); P(D2); B("------"); P(F2); B("   |");
+            B("\n| /'         |        `. |");
+            B("\n"); P(A1); B("----------"); P(D1); B("----------"); P(G1);
+            B("\n");
 
         }
     }
