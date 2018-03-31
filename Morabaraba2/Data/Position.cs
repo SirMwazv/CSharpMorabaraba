@@ -15,7 +15,7 @@ namespace Morabaraba2.Data
             this.pos = pos;
         }
 
-        public override string ToString()
+        public override string ToString()   //This is called when using String.Format to print board positions 
         {
             return pos;
         }

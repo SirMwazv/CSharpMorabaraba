@@ -9,16 +9,16 @@ using static Morabaraba2.Data.Position;
 
 namespace Morabaraba2.Display
 {
-    class PrintBoard
+    class Board
     {
-        List<Cow> CowList1; //list of cows for player 1
-        List<Cow> CowList2; //list of cows for player 2
+        static List<Position> CowList1; //list of cows for player 1
+        static List<Position> CowList2; //list of cows for player 2
 
         /// <summary>
         /// Function to print the board to the console 
         /// </summary>
         /// <param name="state">Game State variable holding all necesarry data about the game</param>
-        public PrintBoard(GameState state)
+        public static void  PrintBoard(GameState state)
         {
             CowList1 = state.current.Cows;
             CowList2 = state.opponent.Cows;
@@ -29,14 +29,14 @@ namespace Morabaraba2.Display
                 //iterate through current players cows
                 for (int i = 0; i < CowList1.Count; i++)
                 {
-                    if (CowList1[i].pos == pos)
+                    if (CowList1[i].ToString() == pos.ToString())
                         return state.current.playerColor;   //cow found return color
                 }
 
                 //iterate through opponent players cows
                 for (int i = 0; i < CowList2.Count; i++)
                 {
-                    if (CowList2[i].pos == pos)
+                    if (CowList2[i].ToString() == pos.ToString())
                         return state.opponent.playerColor;  //cow found return color
                 }               
 

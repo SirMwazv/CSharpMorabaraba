@@ -11,7 +11,8 @@ namespace Morabaraba2.Data
         public string name;
         public ConsoleColor playerColor;
         public int placedCows, deadCows;
-        public List<Cow> Cows;
+        public List<Position> Cows;
+        public string cowState;
         public List<Position[]> MyMills;
 
         public Player(string name, ConsoleColor playerColor)
@@ -19,8 +20,20 @@ namespace Morabaraba2.Data
             this.name = name;
             this.playerColor = playerColor;
             placedCows = 0;
-            Cows = new List<Cow>();
+            deadCows = 0;
+            Cows = new List<Position>();
+            cowState = "OnBoard";
             MyMills = new List<Position[]>();
+        }
+
+        void FlyCows()
+        {
+            cowState = "Flying";
+        }
+
+        public bool IsFlying()
+        {
+            return cowState == "Flying";
         }
     }
 }
