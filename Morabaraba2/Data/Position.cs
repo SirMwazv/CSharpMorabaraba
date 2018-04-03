@@ -20,6 +20,7 @@ namespace Morabaraba2.Data
             return pos;
         }
 
+        #region All Possible Positions on the board 
         public static Position A1 = new Position("A1");
         public static Position A4 = new Position("A4");
         public static Position A7 = new Position("A7");
@@ -52,6 +53,7 @@ namespace Morabaraba2.Data
         public static Position G7 = new Position("G7");
 
         public static Position XX = new Position("XX"); //denotes invalid position 
+        #endregion
 
     }
 }
