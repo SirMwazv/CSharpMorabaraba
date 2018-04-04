@@ -74,5 +74,14 @@ namespace Morabaraba2.Display
             B("\n");
 
         }
+
+        /// <summary>
+        /// Method to print generic error to console 
+        /// </summary>
+        /// <param name="msg">Message to print to console</param>
+        public static void PrintErr(string msg)
+        {
+            Console.WriteLine(String.Format("Error!:\t{0}",msg));
+        }
     }
 }

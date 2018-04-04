@@ -14,6 +14,7 @@ using static Morabaraba2.Display.Board;
 
 namespace Morabaraba2
 {
+    //Main entry Point for Game
     class Program
     {
         static void Main(string[] args)
