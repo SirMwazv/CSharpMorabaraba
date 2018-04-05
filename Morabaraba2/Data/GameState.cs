@@ -45,7 +45,10 @@ namespace Morabaraba2.Data
         /// <param name="state">Current Game State</param>
         public void SwapPlayers(GameState state)
         {
-            //TODO
+            Player tmp = state.current;
+            state.current = state.opponent;
+            state.opponent = tmp;
+
         }
 
         /// <summary>

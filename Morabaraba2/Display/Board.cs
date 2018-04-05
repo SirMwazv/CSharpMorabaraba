@@ -56,8 +56,6 @@ namespace Morabaraba2.Display
                 Console.Write(String.Format("{0}", board));
             }
 
-            //TODO: Rest of Print Board Function. Figure out way of efficiently printing the board 
-
             P(A7); B("----------"); P(D7); B("----------"); P(G7);
             B("\n| `.        |         /' |");
             B("\n|   "); P(B6); B("------"); P(D6); B("------"); P(F6); B("   |");
