@@ -42,7 +42,12 @@ namespace Morabaraba2.Data
         /// <returns>Bool: If cow is in a mill then True otherwise return false</returns>
         public bool InMill(string pos)
         {
-            //TODO
+            foreach (Position[] tmpArr in MyMills)
+            {
+                foreach (Position tmp in tmpArr)
+                    if (tmp.pos == pos)
+                        return true;
+            }
             return false;
         }
 
@@ -50,10 +55,17 @@ namespace Morabaraba2.Data
         /// Method to check if all players cows are in a mill 
         /// </summary>
         /// <returns>True if all players cows are in a mill otherwise return false</returns>
-        public bool AllInAMill()    //to be called to check if shooting a cow in a mill is allowed only if all of players cows are in a mill
+        public bool AllInAMill()    //to be called to check if shooting a cow in a mill is allowed, only if all of players cows are in a mill
         {
-            //TODO
-            return false;
+            
+            foreach (var myCow in Cows)
+            {
+                if (InMill(myCow.pos))
+                    continue;
+                else
+                    return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -79,7 +91,16 @@ namespace Morabaraba2.Data
         /// <param name="pos">Cow to shoot</param>
         public void ShootCow(string pos)
         {
-            //TODO
+            int count = Cows.Count();
+            for (int i = 0; i < count; i++)
+            {
+                if (Cows[count].pos == pos) {
+                    Cows.RemoveAt(count);
+                    deadCows++;
+                }
+                    
+            }
+            
         }
 
         /// <summary>

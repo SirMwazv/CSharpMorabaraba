@@ -53,7 +53,6 @@ namespace Morabaraba2.Data
         /// <returns>List of adjacent positions</returns>
         public List<Position> GetAdjacentPositions(string pos)
         {
-            //TODO
 
             List<Position> ret = new List<Position>();
 
@@ -190,7 +189,7 @@ namespace Morabaraba2.Data
         /// <returns>List of all mill combos with that position as a Position Array</returns>
         public List<Position[]> GetPossibleMills(string pos)
         {
-            //TODO
+            
             List<Position[]> result = new List<Position[]>();
 
             switch (pos)
