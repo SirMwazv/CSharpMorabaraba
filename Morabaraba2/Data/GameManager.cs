@@ -8,6 +8,7 @@ namespace Morabaraba2.Data
 {
     class GameManager
     {
+        
         public GameState state;
 
         /// <summary>
@@ -40,6 +41,19 @@ namespace Morabaraba2.Data
         /// </summary>
         void RunMoving()
         {
+            /*1. Validate the input:
+             * (Must be adjacent)
+             * IF (CurrentPosition is in 'Ret'[Ret is list containing all of the adjacent positions] THEN
+             *  CONTINUE;
+             * ELSE return INVALID MOVE
+             * IF (EnteredMove is in Player1CowList or is in Player2CowList) THEN 
+             *  return INVALID MOVE
+             * ELSE 
+             *  CONTINUE;
+             * 
+             * 2. Remove CurrentPosition from CurrentPlayerCowList 
+             *    Add InputedPosition into CurrentPlayerCowList
+             */
             //TODO
         }
 
