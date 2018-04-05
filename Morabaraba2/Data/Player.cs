@@ -95,12 +95,9 @@ namespace Morabaraba2.Data
             for (int i = 0; i < count; i++)
             {
                 if (Cows[count].pos == pos) {
-                    Cows.RemoveAt(count);
-                    deadCows++;
-                }
-                    
+                    Cows.RemoveAt(count);                    
+                }          
             }
-            
         }
 
         /// <summary>
@@ -108,9 +105,10 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="oldPos">Cow to remove </param>
         /// <param name="newPos">Cow to add</param>
-        public void MoveCow(string oldPos, string newPos)
+        public void MoveCow(Position oldPos, Position newPos)
         {
-            //TODO
+            ShootCow(oldPos.pos);
+            Cows.Add(newPos);
         }
 
         /// <summary>
