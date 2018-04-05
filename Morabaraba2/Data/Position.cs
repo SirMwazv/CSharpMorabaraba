@@ -191,7 +191,240 @@ namespace Morabaraba2.Data
         public List<Position[]> GetPossibleMills(string pos)
         {
             //TODO
-            return new List<Position[]>();
+            List<Position[]> result = new List<Position[]>();
+
+            switch (pos)
+            {
+                case "A1":
+                    List<Position[]> a1 = new List<Position[]>
+                    {
+                        new Position[] {A1,D1,G1},
+                        new Position[] {A7,A4,A1},
+                        new Position[] {A1,B2,C3},
+                    };
+                    result = a1;
+                    break;
+
+                case "A4":
+                    List<Position[]> a4 = new List<Position[]>
+                        {
+                            new Position[] {A4,B4,C4},
+                            new Position[] {A7,A4,A1},                           
+                        };
+                    result = a4;
+                    break;
+
+                case "A7":
+                    List<Position[]> a7 = new List<Position[]>
+                        {
+                            new Position[] {A7,D7,G7},
+                            new Position[] {A7,A4,A1},
+                            new Position[] {A7,B6,C5},
+                        };
+                    result = a7;
+                    break;
+
+                case "B2":
+                    List<Position[]> b2 = new List<Position[]> 
+                        {
+                            new Position[] {B2,D2,F2},
+                            new Position[] {B6,B4,B2},
+                            new Position[] {A1,B2,C3},
+                        };  
+                    result = b2;   
+                    break;      
+                                
+                case "B4":      
+                    List<Position[]> b4 = new List<Position[]>
+                        {
+                            new Position[] {A4,B4,C4},
+                            new Position[] {B6,B4,B2},
+                        };
+                    result = b4;
+                    break;      
+                                
+                case "B6":             
+                    List<Position[]> b6 = new List<Position[]>
+                        {
+                            new Position[] {B6,D6,F6},
+                            new Position[] {B6,B4,B2},
+                            new Position[] {A7,B6,C5},
+                        };
+                    result = b6;   
+                    break;      
+                                
+                case "C3":
+                    List<Position[]> c3 = new List<Position[]>
+                    {
+                        new Position[] {C3,D3,E3},
+                        new Position[] {C5,C4,C3},
+                        new Position[] {A1,B2,C3},
+                    };
+                    result = c3;   
+                    break;      
+                                
+               case "C4":
+                    List<Position[]> c4 = new List<Position[]>
+                    {
+                        new Position[] {A4,B4,C4},
+                        new Position[] {C5,C4,C3},
+                    };
+                   result = c4;   
+                   break;      
+                               
+               case "C5":
+                    List<Position[]> c5 = new List<Position[]>
+                   {
+                       new Position[] {C5,D5,E5},
+                       new Position[] {C5,C4,C3},
+                       new Position[] {A7,B6,C5},
+                   };
+                   result = c5;   
+                   break;      
+                               
+               case "D1":
+                    List<Position[]> d1 = new List<Position[]>
+                   {
+                       new Position[] {A1,D1,G1},
+                       new Position[] {D3,D2,D1},
+                   };
+                   result = d1;    
+                   break;       
+                                
+               case "D2":
+                    List<Position[]> d2 = new List<Position[]>
+                   {
+                        new Position[] {B2,D2,F2},
+                        new Position[] {D3,D2,D1},
+                   };
+                   result = d2;   
+                   break;      
+                               
+               case "D3":
+                    List<Position[]> d3 = new List<Position[]>
+                   {
+                        new Position[] {C3,D3,E3},
+                        new Position[] {D3,D2,D1},
+                   };
+                   result = d3;    
+                   break;       
+                                
+               case "D5":
+                    List<Position[]> d5 = new List<Position[]>
+                   {
+                       new Position[] {C5,D5,E5},
+                       new Position[] {D7,D6,D5},
+                   };
+                   result = d5;    
+                   break;       
+                                
+               case "D6":
+                    List<Position[]> d6 = new List<Position[]>
+                   {
+                       new Position[] {B6,D6,F6},
+                       new Position[] {D7,D6,D5},
+                   };
+                   result = d6;    
+                   break;       
+                                
+               case "D7":
+                    List<Position[]> d7 = new List<Position[]>
+                   {
+                       new Position[] {A7,D7,G7},
+                       new Position[] {D7,D6,D5},
+                   };
+                   result = d7;    
+                   break;       
+                                
+               case "E3":
+                    List<Position[]> e3 = new List<Position[]>
+                   {
+                       new Position[] {C3,D3,E3},
+                       new Position[] {E5,E4,E3},
+                       new Position[] {E3,F2,G1}
+                   };
+                   result = e3;    
+                   break;       
+                                
+               case "E4":
+                    List<Position[]> e4 = new List<Position[]>
+                   {
+                       new Position[] {E4,F4,G4},
+                       new Position[] {E5,E4,E3},
+                   };
+                   result = e4;    
+                   break;       
+                                
+               case "E5":
+                    List<Position[]> e5 = new List<Position[]>
+                   {
+                       new Position[] {C5,D5,E5},
+                       new Position[] {E5,E4,E3},
+                        new Position[] {E5,F6,G7},
+                   };
+                   result = e5;    
+                   break;       
+                                
+               case "F2":
+                    List<Position[]> f2 = new List<Position[]>
+                   {
+                       new Position[] {B2,D2,F2},
+                       new Position[] {F6,F4,F2},
+                       new Position[] {E3,F2,G1}
+                   };
+                   result = f2;    
+                   break;       
+                                
+               case "F4":
+                    List<Position[]> f4 = new List<Position[]>
+                   {
+                       new Position[] {E4,F4,G4},
+                       new Position[] {F6,F4,F2},
+                   };
+                   result = f4;    
+                   break;       
+                                
+               case "F6":
+                    List<Position[]> f6 = new List<Position[]>
+                   {
+                       new Position[] {B6,D6,F6},
+                       new Position[] {F6,F4,F2},
+                       new Position[] {E5,F6,G7},
+                   };
+                   result = f6;    
+                   break;       
+                                
+               case "G1":
+                    List<Position[]> g1 = new List<Position[]>
+                   {
+                       new Position[] {A1,D1,G1},
+                       new Position[] {G7,G4,G1},
+                       new Position[] {E3,F2,G1}
+                   };
+                   result = g1;    
+                   break;       
+                                
+               case "G4":
+                    List<Position[]> g4 = new List<Position[]>
+                   {
+                       new Position[] {E4,F4,G4},
+                       new Position[] {G7,G4,G1},
+                   };
+                   result = g4;    
+                   break;       
+                                
+               case "G7":
+                    List<Position[]> g7 = new List<Position[]>
+                   {
+                       new Position[] {A7,D7,G7},
+                       new Position[] {G7,G4,G1},
+                       new Position[] {E5,F6,G7},
+                   };
+                   result = g7;
+                   break;
+             
+            }
+            return result;
         }
 
         #region All Possible Positions on the board 
