@@ -33,7 +33,17 @@ namespace Morabaraba2.Data
         /// </summary>
         void RunPlacing()
         {
+          /* Must have a list with all unused positions
+           * 1. Validate Placing:
+           * IF (UnusedPositionsList is empty) THEN 
+           *    Change State to Moving
+           *    ELSE
+           *        IF(Input is in the UnusedPositionsList) THEN 
+           *            Add Input to PlayerCowsList
+           *            Remove InputPosition from UnusedPositionsList
+           */
             //TODO
+        
         }
 
         /// <summary>
@@ -62,6 +72,14 @@ namespace Morabaraba2.Data
         /// </summary>
         void Won(Player winner)
         {
+            /*
+             * IF Player1State is Flying THEN 
+             *  IF (NumberofCows in Player1CowList is 3 or Less) 
+             *      then Player2 wins
+             * IF Player2State is Flying THEN 
+             *  IF (NumberofCows in Player2CowList is 3 or Less) 
+             *      then Player1 wins
+             */
             //TODO
         }
     }
