@@ -51,9 +51,8 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="pos">Position to get adjacent moves for</param>
         /// <returns>List of adjacent positions</returns>
-        public List<Position> GetAdjacentPositions(string pos)
+        public static List<Position> GetAdjacentPositions(string pos)
         {
-            //TODO
 
             List<Position> ret = new List<Position>();
 
@@ -188,9 +187,9 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="pos">Position to get mill combos for</param>
         /// <returns>List of all mill combos with that position as a Position Array</returns>
-        public List<Position[]> GetPossibleMills(string pos)
+        public static List<Position[]> GetPossibleMills(string pos)
         {
-            //TODO
+            
             List<Position[]> result = new List<Position[]>();
 
             switch (pos)

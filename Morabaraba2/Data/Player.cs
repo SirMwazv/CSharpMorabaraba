@@ -40,9 +40,14 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="pos">Cow to determine whether in a mill or not</param>
         /// <returns>Bool: If cow is in a mill then True otherwise return false</returns>
-        public bool InMill(string pos)
+        public bool InMill(Position pos)
         {
-            //TODO
+            foreach (Position[] tmpArr in MyMills)
+            {
+                foreach (Position tmp in tmpArr)
+                    if (tmp == pos)
+                        return true;
+            }
             return false;
         }
 
@@ -50,10 +55,17 @@ namespace Morabaraba2.Data
         /// Method to check if all players cows are in a mill 
         /// </summary>
         /// <returns>True if all players cows are in a mill otherwise return false</returns>
-        public bool AllInAMill()    //to be called to check if shooting a cow in a mill is allowed only if all of players cows are in a mill
+        public bool AllInAMill()    //to be called to check if shooting a cow in a mill is allowed, only if all of players cows are in a mill
         {
-            //TODO
-            return false;
+            
+            foreach (var myCow in Cows)
+            {
+                if (InMill(myCow.pos))
+                    continue;
+                else
+                    return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -77,9 +89,13 @@ namespace Morabaraba2.Data
         /// Method that takes in a position and 'shoots' that cow which belongs to the player 
         /// </summary>
         /// <param name="pos">Cow to shoot</param>
-        public void ShootCow(string pos)
+        public void ShootCow(Position pos)
         {
-            //TODO
+            foreach (var myCow in Cows)
+            {
+                if (Cows.Contains(myCow))
+                    Cows.Remove(myCow);
+            }           
         }
 
         /// <summary>
@@ -87,9 +103,10 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="oldPos">Cow to remove </param>
         /// <param name="newPos">Cow to add</param>
-        public void MoveCow(string oldPos, string newPos)
+        public void MoveCow(Position oldPos, Position newPos)
         {
-            //TODO
+            ShootCow(oldPos.pos);
+            Cows.Add(newPos);
         }
 
         /// <summary>
@@ -101,10 +118,18 @@ namespace Morabaraba2.Data
          * NOTE: This method needs to be called before a cow is added to a players cow list so as to check if any mills will be made by the player this makes it so that 
          * there is no need to keep track of the players previous state and next state. 
          */
-        public List<Position[]> GetMills(string pos) 
+        public List<Position[]> GetMills(Position Pos) 
         {
-            //TODO
-            return new List<Position[]> { };
+            List<Position[]> possibleMills = Position.GetPossibleMills(Pos.pos);
+
+            //filter out mills i already have
+            foreach (var mill in possibleMills)
+            {
+                if (MyMills.Contains(mill))
+                    possibleMills.Remove(mill);
+            }
+
+            return possibleMills;
         }
     }
 }
