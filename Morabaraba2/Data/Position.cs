@@ -41,6 +41,91 @@ namespace Morabaraba2.Data
             this.pos = pos;
         }
 
+        /// <summary>
+        /// Method to convert string representation of a Cow into a 'Position' class instance
+        /// </summary>
+        /// <param name="pos">Cow to convert into Position</param>
+        /// <returns>Position representation of a cow</returns>
+        public static Position GetPosition(string pos)
+        {
+            switch (pos)
+            {
+                case "A1":
+                    return A1;
+
+                case "A4":
+                    return A4;
+
+                case "A7":
+                    return A7;
+
+                case "B2":
+                    return B2;
+
+                case "B4":
+                    return B4;
+
+                case "B6":
+                    return B6;
+
+                case "C3":
+                    return C3;
+
+                case "C4":
+                    return C4;
+
+                case "C5":
+                    return C5;
+
+                case "D1":
+                    return D1;
+
+                case "D2":
+                    return D2;
+
+                case "D3":
+                    return D3;
+
+                case "D5":
+                    return D5;
+
+                case "D6":
+                    return D6;
+
+                case "D7":
+                    return D7;
+
+                case "E3":
+                    return E3;
+
+                case "E4":
+                    return E4;
+
+                case "E5":
+                    return E5;
+
+                case "F2":
+                    return F2;
+
+                case "F4":
+                    return F4;
+
+                case "F6":
+                    return F6;
+
+                case "G1":
+                    return G1;
+
+                case "G4":
+                    return G4;
+
+                case "G7":
+                    return G7;
+                default:
+                    return XX;
+            }
+        } 
+
         public override string ToString()   //This is called when using String.Format to print board positions 
         {
             return pos;
