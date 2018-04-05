@@ -60,7 +60,7 @@ namespace Morabaraba2.Data
             
             foreach (var myCow in Cows)
             {
-                if (InMill(myCow.pos))
+                if (InMill(myCow))
                     continue;
                 else
                     return false;
@@ -105,7 +105,7 @@ namespace Morabaraba2.Data
         /// <param name="newPos">Cow to add</param>
         public void MoveCow(Position oldPos, Position newPos)
         {
-            ShootCow(oldPos.pos);
+            ShootCow(oldPos);
             Cows.Add(newPos);
         }
 
