@@ -89,15 +89,13 @@ namespace Morabaraba2.Data
         /// Method that takes in a position and 'shoots' that cow which belongs to the player 
         /// </summary>
         /// <param name="pos">Cow to shoot</param>
-        public void ShootCow(string pos)
+        public void ShootCow(Position pos)
         {
-            int count = Cows.Count();
-            for (int i = 0; i < count; i++)
+            foreach (var myCow in Cows)
             {
-                if (Cows[i].pos == pos) {
-                    Cows.RemoveAt(i);                    
-                }          
-            }
+                if (Cows.Contains(myCow))
+                    Cows.Remove(myCow);
+            }           
         }
 
         /// <summary>
