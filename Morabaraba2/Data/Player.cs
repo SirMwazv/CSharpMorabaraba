@@ -40,12 +40,12 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="pos">Cow to determine whether in a mill or not</param>
         /// <returns>Bool: If cow is in a mill then True otherwise return false</returns>
-        public bool InMill(string pos)
+        public bool InMill(Position pos)
         {
             foreach (Position[] tmpArr in MyMills)
             {
                 foreach (Position tmp in tmpArr)
-                    if (tmp.pos == pos)
+                    if (tmp == pos)
                         return true;
             }
             return false;
