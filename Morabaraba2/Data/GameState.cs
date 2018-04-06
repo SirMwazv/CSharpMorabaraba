@@ -21,8 +21,8 @@ namespace Morabaraba2.Data
         /// </summary>
         public GameState()  //to be used for quickplay feature
         {
-            current = new Player("Player 1", ConsoleColor.DarkMagenta);
-            opponent = new Player("Player 2", ConsoleColor.DarkGreen);
+            current = new Player("Player 1", ConsoleColor.Red);
+            opponent = new Player("Player 2", ConsoleColor.Green);
             defaultColor = ConsoleColor.Gray;
         }
 
@@ -68,7 +68,7 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="inputPos">Position player want to move to</param>
         /// <returns>True if position is free else returns false</returns>
-        public bool IsValidMove(string inputPos)
+        public bool IsValidPosition(string inputPos)
         {
             //TODO
             return false;
