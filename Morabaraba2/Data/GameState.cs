@@ -95,9 +95,24 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="state">Current Game State</param>
         /// <returns>True if game should move to next phase otherwise returns false</returns>
-        public bool CheckPhase(GameState state)
+        public bool CheckPhase(GameState.Phase state)
         {
-            //TODO
+            //TODO what's the difference between state and phase?
+            
+            switch(state)
+            {
+                case Phase.Placing:
+                    if (current.placedCows == 12 && opponent.placedCows == 12)
+                        return true;
+                    break;
+                case Phase.Moving:                    
+                    if (current.Cows.Count==2||opponent.Cows.Count==2)
+                        return true;
+                    break;
+                case Phase.Won:
+                    return false;                   
+                    
+            }
             return false;
         }
 
