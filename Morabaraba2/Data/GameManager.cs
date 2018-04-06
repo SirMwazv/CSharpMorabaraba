@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Morabaraba2.Display;
+using static Morabaraba2.Data.GameState;
 
 namespace Morabaraba2.Data
 {
@@ -35,18 +36,19 @@ namespace Morabaraba2.Data
         /// </summary>
         void RunPlacing()
         {
-          /* 
-           * 0. Use a while loop to run the phase e.g while (!checkPhase(state.phase)) therefore at the end of the loop the method wil check if the phase should move on
-           * Inside the while loop:
-               * 1. Prompt user for input and Get Input 
-               * 2.1 Validate input string is in correct format using IsValidInput Method
-               * 2.2 Validate Position is free using IsValidPosition
-               * 3.1 If validation fails print error using printErr method of board class and ask for input again (i recommend making an if statement that just prints the error, 
-               * reads the line so that the user can see it, then 'continue' to restart loop *Also: Important to clear the console at the beginning of the loop*)
-               * 3.2 If input is valid then add position to current players cow list e.g state.current.Cows.Add(GetPosition(inputFromUser));
-               * 4. swap players by calling SwapPlayer method of GameState class 
-            * End of loop (it will automatically check if it should move to the next phase)
-           */
+            /* Important: Clear the console at the beginning of the loop and print the board immediately after (inside while loop, which i explain below)
+             * 0. Use a while loop to run the entire placing phase e.g while (!checkPhase(state.phase)) therefore at the end of the loop the method wil check if the phase should move on
+             * Inside the while loop:
+                 * 1. Prompt user for input and Get Input 
+                 * 2.1 Validate input string is in correct format using IsValidInput Method
+                 * 2.2 Validate Position is free using IsValidPosition
+                 * 3.1 If validation fails print error using printErr method of board class and ask for input again (i recommend making an if statement that just prints the error, 
+                 * reads the line so that the user can see it, then 'continue' to restart loop)
+                 * 3.2 If input is valid then add position to current players cow list e.g state.current.Cows.Add(GetPosition(inputFromUser));
+                 * 3.3 Print changes by calling 
+                 * 4. swap players by calling SwapPlayer method of GameState class (note 'using' directive above so you can call method directly)
+              * End of loop (it will automatically check if it should move to the next phase)
+             */
         }
 
         /// <summary>
@@ -54,20 +56,7 @@ namespace Morabaraba2.Data
         /// </summary>
         void RunMoving()
         {
-            /*1. Validate the input:
-             * (Must be adjacent)
-             * IF (CurrentPosition is in 'Ret'[Ret is list containing all of the adjacent positions] THEN
-             *  CONTINUE;
-             * ELSE return INVALID MOVE
-             * IF (EnteredMove is in Player1CowList or is in Player2CowList) THEN 
-             *  return INVALID MOVE
-             * ELSE 
-             *  CONTINUE;
-             * 
-             * 2. Remove CurrentPosition from CurrentPlayerCowList 
-             *    Add InputedPosition into CurrentPlayerCowList
-             */
-            //TODO
+            Console.WriteLine(state.current + "");
         }
 
         /// <summary>

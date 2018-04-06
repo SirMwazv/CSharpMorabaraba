@@ -46,7 +46,7 @@ namespace Morabaraba2.Data
         /// Method to swap players by making 'current' player into 'opponent' and vice versa
         /// </summary>
         /// <param name="state">Current Game State</param>
-        public void SwapPlayers(GameState state)
+        public static void SwapPlayers(GameState state)
         {
             Player tmp = state.current;
             state.current = state.opponent;
