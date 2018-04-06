@@ -82,8 +82,11 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="inputPos">Position player want to move to</param>
         /// <returns>True if position is free else returns false</returns>
-        public bool IsValidPosition(Position inputPos)
-        {            
+        public bool IsValidPosition(Position inputPos)//TODO: I changed input to position. I am assuming there is a method which will convert console string input to position type.
+        {
+            if (current.Cows.Contains(inputPos) || opponent.Cows.Contains(inputPos))
+                return false;
+            else
                 return true;
         }
 
