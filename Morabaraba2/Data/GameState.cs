@@ -59,7 +59,21 @@ namespace Morabaraba2.Data
         /// <returns>True if input in correct format, otherwise false</returns>
         public bool IsValidInput(string str, Phase phase)
         {
-            //TODO
+            //TODO:Method done but is there anything we should do to the input if the game has been won or there's a draw?
+
+            if (phase == Phase.Placing)
+            {
+                if (str.Length == 2 && Char.IsLetter(str[0]) == true && Char.IsDigit(str[1]) == true)
+                    return true;
+            }
+
+            if (phase == Phase.Moving)// TODO: Here we have two inputs. Where the cow is and where one wishes to place it.
+                                      // I am assuming that these will be received as "A1A7" as in from A1 to A7. If incorrect, just show me how the input will be and I'll correct it.
+
+            {
+                if (str.Length == 4 && Char.IsLetter(str[0]) == true && Char.IsDigit(str[1]) == true && Char.IsLetter(str[2]) == true && Char.IsDigit(str[3]) == true)
+                    return true;
+            }
             return false;
         }
 
@@ -68,10 +82,12 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="inputPos">Position player want to move to</param>
         /// <returns>True if position is free else returns false</returns>
-        public bool IsValidPosition(string inputPos)
+        public bool IsValidPosition(Position inputPos)//TODO: I changed input to position. I am assuming there is a method which will convert console string input to position type.
         {
-            //TODO
-            return false;
+            if (current.Cows.Contains(inputPos) || opponent.Cows.Contains(inputPos))
+                return false;
+            else
+                return true;
         }
 
         /// <summary>
