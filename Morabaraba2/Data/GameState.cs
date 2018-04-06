@@ -10,8 +10,9 @@ namespace Morabaraba2.Data
     {
         #region Data to be used in GameState Class
 
-        public Player current, opponent;
+        public Player current, opponent, winner;
         public enum Phase {Placing , Moving, Won, Draw }
+        public Phase phase; 
         public ConsoleColor defaultColor;
 
         #endregion
@@ -23,6 +24,7 @@ namespace Morabaraba2.Data
         {
             current = new Player("Player 1", ConsoleColor.Red);
             opponent = new Player("Player 2", ConsoleColor.Green);
+            phase = Phase.Placing;
             defaultColor = ConsoleColor.Gray;
         }
 
@@ -37,6 +39,7 @@ namespace Morabaraba2.Data
             current = player_x;
             opponent = player_y;
             defaultColor = col;
+            phase = Phase.Placing;
         }
 
         /// <summary>
@@ -59,21 +62,22 @@ namespace Morabaraba2.Data
         /// <returns>True if input in correct format, otherwise false</returns>
         public bool IsValidInput(string str, Phase phase)
         {
-            //TODO:Method done but is there anything we should do to the input if the game has been won or there's a draw?
-
             if (phase == Phase.Placing)
             {
                 if (str.Length == 2 && Char.IsLetter(str[0]) == true && Char.IsDigit(str[1]) == true)
-                    return true;
+                    if (Position.GetPosition(str) != Position.XX)
+                        return true;
             }
 
-            if (phase == Phase.Moving)// TODO: Here we have two inputs. Where the cow is and where one wishes to place it.
-                                      // I am assuming that these will be received as "A1A7" as in from A1 to A7. If incorrect, just show me how the input will be and I'll correct it.
-
+            if (phase == Phase.Moving)
             {
                 if (str.Length == 4 && Char.IsLetter(str[0]) == true && Char.IsDigit(str[1]) == true && Char.IsLetter(str[2]) == true && Char.IsDigit(str[3]) == true)
-                    return true;
+                {
+                    if (Position.GetPosition(str.Substring(0, 2)) != Position.XX && Position.GetPosition(str.Substring(2, 2)) != Position.XX)
+                        return true;
+                }                    
             }
+
             return false;
         }
 
@@ -82,7 +86,7 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="inputPos">Position player want to move to</param>
         /// <returns>True if position is free else returns false</returns>
-        public bool IsValidPosition(Position inputPos)//TODO: I changed input to position. I am assuming there is a method which will convert console string input to position type.
+        public bool IsValidPosition(Position inputPos)
         {
             if (current.Cows.Contains(inputPos) || opponent.Cows.Contains(inputPos))
                 return false;
@@ -90,26 +94,38 @@ namespace Morabaraba2.Data
                 return true;
         }
 
+
         /// <summary>
         /// Method that checks if game should move to next phase 
         /// </summary>
         /// <param name="state">Current Game State</param>
         /// <returns>True if game should move to next phase otherwise returns false</returns>
-        public bool CheckPhase(GameState.Phase state)
-        {
-            //TODO what's the difference between state and phase?
-            
-            switch(state)
+        public bool CheckPhase(GameState state)
+        {                         
+            switch (state.phase)
             {
                 case Phase.Placing:
-                    if (current.placedCows == 12 && opponent.placedCows == 12)
+                    if (state.current.placedCows == 12 && state.opponent.placedCows == 12)
                         return true;
                     break;
-                case Phase.Moving:                    
-                    if (current.Cows.Count==2||opponent.Cows.Count==2)
+
+                case Phase.Moving:
+
+                    if (state.current.Cows.Count == 2)
+                    {
+                        state.winner = state.opponent;                        
                         return true;
+                    }
+
+                    if (state.opponent.Cows.Count == 2)
+                    {
+                        state.winner = state.current;
+                        return true;
+                    }
+
                     break;
-                case Phase.Won:
+
+                default:
                     return false;                   
                     
             }
