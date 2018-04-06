@@ -60,7 +60,7 @@ namespace Morabaraba2.Data
         /// <param name="str">Input from console</param>
         /// <param name="phase">Current phase of the game state</param>
         /// <returns>True if input in correct format, otherwise false</returns>
-        public bool IsValidInput(string str, Phase phase)
+        public static bool IsValidInput(string str, Phase phase)
         {
             if (phase == Phase.Placing)
             {
@@ -100,7 +100,7 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="state">Current Game State</param>
         /// <returns>True if game should move to next phase otherwise returns false</returns>
-        public bool CheckPhase(GameState state)
+        public static bool CheckPhase(GameState state)
         {                         
             switch (state.phase)
             {

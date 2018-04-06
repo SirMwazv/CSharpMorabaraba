@@ -20,6 +20,7 @@ namespace Morabaraba2.Display
         /// <param name="state">Game State variable holding all necesarry data about the game</param>
         public static void  PrintBoard(GameState state)
         {
+            Console.Clear();
             CowList1 = state.current.Cows;
             CowList2 = state.opponent.Cows;
 
