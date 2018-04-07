@@ -121,15 +121,24 @@ namespace Morabaraba2.Data
         public List<Position[]> GetMills(Position Pos) 
         {
             List<Position[]> possibleMills = Position.GetPossibleMills(Pos.pos);
-
+            List<Position[]> finalMills = new List<Position[]>();
             //filter out mills i already have
             foreach (var mill in possibleMills)
             {
-                if (MyMills.Contains(mill))
-                    possibleMills.Remove(mill);
+                if (!(MyMills.Contains(mill)))
+                    finalMills.Add(mill);
             }
 
-            return possibleMills;
+            //filter out mills that i don't have the cows for
+            foreach (var mill in possibleMills)
+            {
+                if (!(Cows.Contains(mill[0]) && Cows.Contains(mill[1]) && Cows.Contains(mill[2])))
+                    finalMills.Remove(mill);
+
+            }
+
+            return finalMills;
         }
+
     }
 }

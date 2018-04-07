@@ -80,7 +80,7 @@ namespace Morabaraba2.Display
         /// <param name="msg">Message to print to console</param>
         public static void PrintErr(string msg)
         {
-            Console.WriteLine(String.Format("Error!:\t{0}",msg));
+            Console.WriteLine(String.Format("Error!:\t{0}. {1}",msg,"Press Enter To Continue."));
         }
     }
 }
