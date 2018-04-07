@@ -155,6 +155,9 @@ namespace Morabaraba2
                     break;
             }
 
+            if (game.replay)    //allow replay of game 
+                Main(args);
+
 
 
 

@@ -15,6 +15,7 @@ namespace Morabaraba2.Data
     {
         
         public GameState state;     //holds all the data of the current game state therefore access all player and game state variables through this field 
+        public bool replay = false;
 
         /// <summary>
         /// Declare new Game Manager with predefined game state 
@@ -220,32 +221,10 @@ namespace Morabaraba2.Data
         /// </summary>
         void Won(Player winner)
         {
-            if (!CheckPhase(state))
-            {
-                if (state.current.cowState == "Flying")
-                {
-                    if (state.current.Cows.Count <= 3)
-                        Console.WriteLine(state.opponent.name + "is the winner!!! Play again?");
-                }
-                else
-                if (state.opponent.cowState == "Flying")
-                {
-                    if (state.opponent.Cows.Count <= 3)
-                        Console.WriteLine(state.current.name + "is the winner!!! Play again?");
-                }
-            }
-            else PrintBoard(state);         
-
-           
-            /*
-             * IF Player1State is Flying THEN 
-             *  IF (NumberofCows in Player1CowList is 3 or Less) 
-             *      then Player2 wins
-             * IF Player2State is Flying THEN 
-             *  IF (NumberofCows in Player2CowList is 3 or Less) 
-             *      then Player1 wins state.current.Cows.
-             */
-            //TODO  Okay, I implemented the algorithm above. Tell me if I'm right. --Mwazvita
+          Console.WriteLine(winner.name + " is the winner!!! \n Play again? Y|N");
+            if (char.ToUpper(Console.ReadKey().KeyChar) == 'Y')
+                replay = true;
+            
         }
     }
 }
