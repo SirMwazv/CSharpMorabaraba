@@ -113,6 +113,7 @@ namespace Morabaraba2.Data
                             state.current.MyMills.AddRange(mills);  //add mills so that a player can't reuse mills or use more than one mill per turn                             
                             ShootACow();
                         }
+                        SwapPlayers(state); 
 
                     }
 
@@ -186,6 +187,7 @@ namespace Morabaraba2.Data
                                 state.current.MyMills.AddRange(mills);  //add mills so that a player can't reuse mills or use more than one mill per turn                             
                                 ShootACow();
                             }
+                            SwapPlayers(state);
                         }
                         else
                         {
