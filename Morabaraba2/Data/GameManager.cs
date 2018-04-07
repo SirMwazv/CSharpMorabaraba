@@ -218,13 +218,24 @@ namespace Morabaraba2.Data
         /// </summary>
         void Won(Player winner)
         {
+
+            if (!CheckPhase(state))
+            {
+                if (state.current.Cows.Count >= 2)
+                {
+
+                }
+                else PrintBoard(state);
+            }
+            else PrintBoard(state);
+
             /*
              * IF Player1State is Flying THEN 
              *  IF (NumberofCows in Player1CowList is 3 or Less) 
              *      then Player2 wins
              * IF Player2State is Flying THEN 
              *  IF (NumberofCows in Player2CowList is 3 or Less) 
-             *      then Player1 wins
+             *      then Player1 wins state.current.Cows.
              */
             //TODO
         }
