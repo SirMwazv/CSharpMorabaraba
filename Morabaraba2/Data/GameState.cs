@@ -101,7 +101,7 @@ namespace Morabaraba2.Data
         /// <param name="state">Current Game State</param>
         /// <returns>True if game should move to next phase otherwise returns false</returns>
         public static bool CheckPhase(GameState state)
-        {                         
+        {                 
             switch (state.phase)
             {
                 case Phase.Placing:

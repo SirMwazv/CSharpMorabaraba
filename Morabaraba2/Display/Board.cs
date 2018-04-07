@@ -45,6 +45,7 @@ namespace Morabaraba2.Display
             }
 
             //takes a position and prints it to console in the correct color
+
             void P(Position pos)
             {
                 Console.ForegroundColor = myColor(pos);
@@ -52,11 +53,18 @@ namespace Morabaraba2.Display
             }
 
             void B(string board)
-            {
+
+            {                
                 Console.ForegroundColor = state.defaultColor;
                 Console.Write(String.Format("{0}", board));
             }
-
+            B("\n");
+            Console.Write(String.Format("{0} has {1} cows left", state.current.name, 12-state.current.Cows.Count));
+            B("\n");
+            Console.Write(String.Format("{0} has {1} cows left", state.opponent.name,12- state.opponent.Cows.Count,state.opponent.playerColor)); //After shooting a cow, Cows.Count gets back that cow.
+            B("\n");
+            B("\n");
+            B("\n");
             P(A7); B("----------"); P(D7); B("----------"); P(G7);
             B("\n| `.        |         /' |");
             B("\n|   "); P(B6); B("------"); P(D6); B("------"); P(F6); B("   |");
@@ -71,8 +79,8 @@ namespace Morabaraba2.Display
             B("\n| /'         |        `. |");
             B("\n"); P(A1); B("----------"); P(D1); B("----------"); P(G1);
             B("\n");
-
         }
+
 
         /// <summary>
         /// Method to print generic error to console 
