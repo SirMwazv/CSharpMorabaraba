@@ -121,23 +121,29 @@ namespace Morabaraba2.Data
 
                     if (state.IsValidPosition(newPos))    //validate position is free
                     {
-                        //check for and get  mills before adding or removing cows 
-                        List<Position[]> mills = state.current.GetMills(newPos);
-
-                        state.current.ShootCow(oldPos);     //remove old cow from cow list
-                        state.current.Cows.Add(newPos);     //add new cow to cow list
-
-                        PrintBoard(state); //show move of cows
-
-                        //allow player to shootCow if a mill has been made
-                        if (mills.Count > 0)
+                        if (state.current.IsFlying() || GetAdjacentPositions(oldPos.pos).Contains(newPos))   //check for flying cows or if cows are adjacent 
                         {
-                            state.current.MyMills.AddRange(mills);  //add mills so that a player can't reuse mills or use more than one mill per turn                             
-                            ShootACow();
-                        }
-                        
-                    }
+                            //check for and get  mills before adding or removing cows 
+                            List<Position[]> mills = state.current.GetMills(newPos);
 
+                            state.current.MoveCow(oldPos, newPos);  //move the cows                            
+
+                            PrintBoard(state); //show move of cows
+
+                            //allow player to shootCow if a mill has been made
+                            if (mills.Count > 0)
+                            {
+                                state.current.MyMills.AddRange(mills);  //add mills so that a player can't reuse mills or use more than one mill per turn                             
+                                ShootACow();
+                            }
+                        }
+                        else
+                        {
+                            PrintErr("Can't move to a position that is not adjacent, if cows are not flying!");
+                            Console.ReadLine();
+                            continue;
+                        }
+                    }
                     else
                     {
                         PrintErr("Can't move to a position already in use!");
@@ -145,7 +151,8 @@ namespace Morabaraba2.Data
                         continue;
                     }
 
-                }
+
+                }                  
 
                 else
                 {
