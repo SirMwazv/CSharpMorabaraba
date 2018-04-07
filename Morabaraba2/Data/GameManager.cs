@@ -105,6 +105,7 @@ namespace Morabaraba2.Data
                         List<Position[]> mills = state.current.GetMills(newPos);
 
                         state.current.Cows.Add(newPos);     //add new cow to cow list
+                        state.current.placedCows++;         //increase placed cows count
 
                         PrintBoard(state); //show placing of cows
 
