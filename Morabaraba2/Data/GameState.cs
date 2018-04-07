@@ -106,7 +106,10 @@ namespace Morabaraba2.Data
             {
                 case Phase.Placing:
                     if (state.current.placedCows == 12 && state.opponent.placedCows == 12)
+                    {
+                        state.phase = Phase.Moving;
                         return true;
+                    }   
                     break;
 
                 case Phase.Moving:

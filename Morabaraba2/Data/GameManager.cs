@@ -118,7 +118,8 @@ namespace Morabaraba2.Data
                         SwapPlayers(state); 
 
                     }
-
+                    
+                   
                     else
                     {
                         PrintErr("Can't move to a position already in use!");
@@ -136,12 +137,11 @@ namespace Morabaraba2.Data
                 }
             }
         }
-    
-
-        /// <summary>
-        /// Internal Method to run moving phase
-        /// </summary>
-        void RunMoving()
+                    
+    /// <summary>
+    /// Internal Method to run moving phase
+    /// </summary>
+    void RunMoving()
         {
             while (!CheckPhase(state)) //keeps running moving phase till checkphase returns true (therefore game will be won)
             {
