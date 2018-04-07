@@ -105,7 +105,7 @@ namespace Morabaraba2.Data
 
                         state.current.Cows.Add(newPos);     //add new cow to cow list
 
-                        PrintBoard(state); //show move of cows
+                        PrintBoard(state); //show placing of cows
 
                         //allow player to shootCow if a mill has been made
                         if (mills.Count > 0)

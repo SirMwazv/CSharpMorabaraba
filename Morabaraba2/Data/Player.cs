@@ -91,11 +91,13 @@ namespace Morabaraba2.Data
         /// <param name="pos">Cow to shoot</param>
         public void ShootCow(Position pos)
         {
+            List<Position> temp = new List<Position>();
             foreach (var myCow in Cows)
             {
-                if (Cows.Contains(myCow))
-                    Cows.Remove(myCow);
-            }           
+                if (!(myCow == pos))
+                    temp.Add(myCow);
+            }
+            Cows = temp;
         }
 
         /// <summary>
@@ -129,6 +131,8 @@ namespace Morabaraba2.Data
                     finalMills.Add(mill);
             }
 
+            Cows.Add(Pos); //temporarily add cow to accurrately filter cows 
+
             //filter out mills that i don't have the cows for
             foreach (var mill in possibleMills)
             {
@@ -136,6 +140,8 @@ namespace Morabaraba2.Data
                     finalMills.Remove(mill);
 
             }
+
+            Cows.Remove(Pos);   //remove temporary cow 
 
             return finalMills;
         }
