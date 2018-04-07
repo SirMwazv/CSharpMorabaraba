@@ -83,21 +83,69 @@ namespace Morabaraba2.Data
         /// </summary>
         void RunPlacing()
         {
-            /* Important: Clear the console at the beginning of the loop and print the board immediately after (inside while loop, which i explain below)
-             * 0. Use a while loop to run the entire placing phase e.g while (!CheckPhase(state.phase)) therefore at the end of the loop the method wil check if the phase should move on
-             * Inside the while loop:
-                 * 1. Prompt user for input and Get Input (make sure to convert input to upper case when saving it)
-                 * 2.1 Validate input string is in correct format using IsValidInput Method
-                 * 2.2 Validate Position is free using IsValidPosition
-                 * 3.1 If validation fails print error using printErr method of board class and ask for input again (i recommend making an if statement that just prints the error, 
-                 * reads the line so that the user can see it, then 'continue' to restart loop)
-                 * 3.2 If input is valid then add position to current players cow list e.g state.current.Cows.Add(GetPosition(inputFromUser));
-                 * 3.3 Check for mills and shoot a cow if necessary (look at RunMoving for example on how to do this)
-                 * 3.4 Print changes by calling printboard method 
-                 * 4. swap players by calling SwapPlayer method of GameState class (note 'using' directive above so you can call method directly)
-              * End of loop (it will automatically check if it should move to the next phase)
-             */
+            while (!CheckPhase(state)) //keeps running placing phase till checkphase returns true (therefore game will be moved to the next phase)
+            {
+                Console.Clear();
+                PrintBoard(state);
+
+                Console.WriteLine(state.current.name + ", where would you like to place a cow");
+                string input = Console.ReadLine().ToUpper();
+
+                if (IsValidInput(input, state.phase))   //validate string format 
+                {
+                    //get the placing of new position 
+                    Position newPos = GetPosition(input);
+
+                    if (state.IsValidPosition(newPos))    //validate position is free
+                    {
+                        //check for and get  mills before adding or removing cows 
+                        List<Position[]> mills = state.current.GetMills(newPos);
+
+                        state.current.Cows.Add(newPos);     //add new cow to cow list
+
+                        PrintBoard(state); //show move of cows
+
+                        //allow player to shootCow if a mill has been made
+                        if (mills.Count > 0)
+                        {
+                            state.current.MyMills.AddRange(mills);  //add mills so that a player can't reuse mills or use more than one mill per turn                             
+                            ShootACow();
+                        }
+
+                    }
+
+                    else
+                    {
+                        PrintErr("Can't move to a position already in use!");
+                        Console.ReadLine();
+                        continue;
+                    }
+
+                }
+
+                else
+                {
+                    PrintErr("Input must be in correct format!");
+                    Console.ReadLine();
+                    continue;
+                }
+            }
         }
+        /* Important: Clear the console at the beginning of the loop and print the board immediately after (inside while loop, which i explain below)
+         * 0. Use a while loop to run the entire placing phase e.g while (!CheckPhase(state.phase)) therefore at the end of the loop the method wil check if the phase should move on
+         * Inside the while loop:
+             * 1. Prompt user for input and Get Input (make sure to convert input to upper case when saving it)
+             * 2.1 Validate input string is in correct format using IsValidInput Method
+             * 2.2 Validate Position is free using IsValidPosition
+             * 3.1 If validation fails print error using printErr method of board class and ask for input again (i recommend making an if statement that just prints the error, 
+             * reads the line so that the user can see it, then 'continue' to restart loop)
+             * 3.2 If input is valid then add position to current players cow list e.g state.current.Cows.Add(GetPosition(inputFromUser));
+             * 3.3 Check for mills and shoot a cow if necessary (look at RunMoving for example on how to do this)
+             * 3.4 Print changes by calling printboard method 
+             * 4. swap players by calling SwapPlayer method of GameState class (note 'using' directive above so you can call method directly)
+          * End of loop (it will automatically check if it should move to the next phase)
+         */
+    
 
         /// <summary>
         /// Internal Method to run moving phase
