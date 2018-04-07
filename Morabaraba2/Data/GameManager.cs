@@ -218,17 +218,23 @@ namespace Morabaraba2.Data
         /// </summary>
         void Won(Player winner)
         {
-
             if (!CheckPhase(state))
             {
-                if (state.current.Cows.Count >= 2)
+                if (state.current.cowState == "Flying")
                 {
-
+                    if (state.current.Cows.Count <= 3)
+                        Console.WriteLine(state.opponent.name + "is the winner!!! Play again?");
                 }
-                else PrintBoard(state);
+                else
+                if (state.opponent.cowState == "Flying")
+                {
+                    if (state.opponent.Cows.Count <= 3)
+                        Console.WriteLine(state.current.name + "is the winner!!! Play again?");
+                }
             }
-            else PrintBoard(state);
+            else PrintBoard(state);         
 
+           
             /*
              * IF Player1State is Flying THEN 
              *  IF (NumberofCows in Player1CowList is 3 or Less) 
@@ -237,7 +243,7 @@ namespace Morabaraba2.Data
              *  IF (NumberofCows in Player2CowList is 3 or Less) 
              *      then Player1 wins state.current.Cows.
              */
-            //TODO
+            //TODO  Okay, I implemented the algorithm above. Tell me if I'm right. --Mwazvita
         }
     }
 }
