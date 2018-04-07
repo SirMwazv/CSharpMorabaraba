@@ -15,7 +15,7 @@ namespace Morabaraba2.Data
     {
         
         public GameState state;     //holds all the data of the current game state therefore access all player and game state variables through this field 
-        public bool replay = false;
+        public bool replay = false; //represents if players wish to replay the game after it finished. 
 
         /// <summary>
         /// Declare new Game Manager with predefined game state 
@@ -136,20 +136,6 @@ namespace Morabaraba2.Data
                 }
             }
         }
-        /* Important: Clear the console at the beginning of the loop and print the board immediately after (inside while loop, which i explain below)
-         * 0. Use a while loop to run the entire placing phase e.g while (!CheckPhase(state.phase)) therefore at the end of the loop the method wil check if the phase should move on
-         * Inside the while loop:
-             * 1. Prompt user for input and Get Input (make sure to convert input to upper case when saving it)
-             * 2.1 Validate input string is in correct format using IsValidInput Method
-             * 2.2 Validate Position is free using IsValidPosition
-             * 3.1 If validation fails print error using printErr method of board class and ask for input again (i recommend making an if statement that just prints the error, 
-             * reads the line so that the user can see it, then 'continue' to restart loop)
-             * 3.2 If input is valid then add position to current players cow list e.g state.current.Cows.Add(GetPosition(inputFromUser));
-             * 3.3 Check for mills and shoot a cow if necessary (look at RunMoving for example on how to do this)
-             * 3.4 Print changes by calling printboard method 
-             * 4. swap players by calling SwapPlayer method of GameState class (note 'using' directive above so you can call method directly)
-          * End of loop (it will automatically check if it should move to the next phase)
-         */
     
 
         /// <summary>

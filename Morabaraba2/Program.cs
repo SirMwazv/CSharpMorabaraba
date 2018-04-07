@@ -19,19 +19,21 @@ namespace Morabaraba2
     {
         static void Main(string[] args)
         {
-            //Note: following code is just a test 
+            var game = new GameManager(new GameState());    //initialize a new game instance
+            string cowArt = @"            
+                               /             \
+                              ((__-^^-,-^^-__))    Moooo!
+                               `-_---' `---_-'    /
+                                <__|o` 'o|__>    /
+                                   \  `  /      /
+                                    ): :(
+                                    :o_o:
+                                     ";
+            string title = "MORABARABA \n\n\n \t* Let the cow genocide begin! >:) * ";
 
-            /*
-            GameState state = new GameState();
-            state.current.Cows.AddRange(new List<Position> {new Position("A7"), new Position("A4")}); //add cows to player list (testing purposes)
-            state.opponent.Cows.AddRange(new List<Position> { new Position("B2"), new Position("B4") });//add cows to player list (testing purposes)
-            Board board = new Board();
-            PrintBoard(state);
-            Console.ReadLine();
-            */
+            Console.WriteLine(String.Format("{0} \n{1}",title,cowArt));
 
-            var game = new GameManager(new GameState());
-            Console.WriteLine("Press 1 for Quickplay \nPress 2 to Setup Game");
+            Console.WriteLine("Press 1 for Quickplay \nPress 2 to Setup Game \nPress any other button to Exit.");
             switch (Console.ReadKey().KeyChar)
             {
                 case '1':
@@ -39,7 +41,7 @@ namespace Morabaraba2
                     break;
                 case '2':
                     #region Setup Player 1
-                    Console.WriteLine("Player 1 please enter your name.");                    
+                    Console.WriteLine("\nPlayer 1 please enter your name.");                    
                     var p1Name = Console.ReadLine();
                     ConsoleColor p1Col = new ConsoleColor();
                     bool validCol = false;
@@ -47,7 +49,7 @@ namespace Morabaraba2
                     while (!validCol)
                     {
                         Console.Clear();
-                        Console.WriteLine(p1Name + ", Choose your color:\n 1:Red \n 2:Blue\n 3:Green \n 4:Yellow");
+                        Console.WriteLine("\n"+p1Name + ", Choose your color:\n 1:Red \n 2:Blue\n 3:Green \n 4:Yellow");
                         p1ColChoice = Console.ReadKey().KeyChar;
                         switch (p1ColChoice)
                         {
@@ -68,7 +70,7 @@ namespace Morabaraba2
                                 validCol = true;
                                 break;
                             default:
-                                PrintErr("Invalid Selection! Please pick a valid number.");
+                                PrintErr("\nInvalid Selection! Please pick a valid number.");
                                 Console.ReadLine();
                                 break;
                         }
@@ -77,7 +79,7 @@ namespace Morabaraba2
                     #endregion
 
                     #region Setup Player 2
-                    Console.WriteLine("Player 2 please enter your name.");
+                    Console.WriteLine("\nPlayer 2 please enter your name.");
                     var p2Name = Console.ReadLine();
                     ConsoleColor p2Col = new ConsoleColor();
                     validCol = false;
@@ -85,11 +87,11 @@ namespace Morabaraba2
                     while (!validCol)
                     {
                         Console.Clear();
-                        Console.WriteLine(p2Name + ", Choose your color:\n 1:Red \n 2:Blue\n 3:Green \n 4:Yellow");
+                        Console.WriteLine("\n" + p2Name + ", Choose your color:\n 1:Red \n 2:Blue\n 3:Green \n 4:Yellow");
                         p2ColChoice = Console.ReadKey().KeyChar;
                         if (p1ColChoice == p2ColChoice)
                         {
-                            PrintErr("Invalid Selection! NOTE: You can't have the same colour as your opponent!");
+                            PrintErr("\nInvalid Selection! NOTE: You can't have the same colour as your opponent!");
                             Console.ReadLine();
                             continue;
                         }
@@ -113,7 +115,7 @@ namespace Morabaraba2
                                 validCol = true;
                                 break;
                             default:
-                                PrintErr("Invalid Selection! Please pick a valid number.");
+                                PrintErr("\nInvalid Selection! Please pick a valid number.");
                                 Console.ReadLine();
                                 break;
                         }
@@ -123,7 +125,7 @@ namespace Morabaraba2
 
                     #region Setup Console Color
                     ConsoleColor bg = new ConsoleColor();
-                    Console.WriteLine("Please Choose a Deafult Color for the console (background)\n 1:Gray \n 2:White \n 3:Cyan \n 4:DarkCyan");
+                    Console.WriteLine("\nPlease Choose a Deafult Color for the console (background)\n 1:Gray \n 2:White \n 3:Cyan \n 4:DarkCyan");
                     switch (Console.ReadKey().KeyChar)
                     {
                         case '1':
@@ -143,7 +145,7 @@ namespace Morabaraba2
                             validCol = true;
                             break;
                         default:
-                            PrintErr("Invalid Selection! Please pick a valid number.");
+                            PrintErr("\nInvalid Selection! Please pick a valid number.");
                             break;
                     }
                     #endregion
