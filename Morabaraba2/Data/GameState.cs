@@ -86,7 +86,7 @@ namespace Morabaraba2.Data
         /// </summary>
         /// <param name="inputPos">Position player want to move to</param>
         /// <returns>True if position is free else returns false</returns>
-        public bool IsValidPosition(Position inputPos)
+        public bool IsValidPosition(Position inputPos) 
         {
             if (current.Cows.Contains(inputPos) || opponent.Cows.Contains(inputPos))
                 return false;
