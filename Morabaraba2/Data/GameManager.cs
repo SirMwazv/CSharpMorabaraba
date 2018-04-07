@@ -50,10 +50,12 @@ namespace Morabaraba2.Data
                 Position shootMePos = GetPosition(shootMe);
                 if (state.opponent.Cows.Contains(shootMePos))   //check if cow belongs to opponent 
                 {
-                    if (state.opponent.AllInAMill())    //only shoot any cow if all opponent's cows are in a mill
+                    if (state.opponent.AllInAMill() || (!(state.opponent.InMill(shootMePos)) && (state.opponent.Cows.Contains(shootMePos))) )    //only shoot any cow if all opponent's cows are in a mill
                     {
                         state.opponent.ShootCow(shootMePos);
                         state.opponent.deadCows++;
+                        if (state.opponent.Cows.Count <= 3)
+                            state.opponent.FlyCows();           //fly players cows if they have 3 cows
                         PrintBoard(state);
                     }
                     else if (state.opponent.InMill(shootMePos))
@@ -61,7 +63,7 @@ namespace Morabaraba2.Data
                         PrintErr("Can't shoot cows in a mill, unless all opponent's cows are in a mill!!");
                         Console.ReadLine();
                         ShootACow();
-                    }
+                    }                    
                 }
                 else
                 {
