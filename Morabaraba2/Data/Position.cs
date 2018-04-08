@@ -159,17 +159,17 @@ namespace Morabaraba2.Data
                     break;                     
                                                
                 case "B2":                      
-                    List<Position> b2 = new List<Position> { A1,D2,C3 };
+                    List<Position> b2 = new List<Position> { A1,D2,C3,B4 };
                     ret = b2;                  
                     break;                     
                                                
                 case "B4":                     
-                    List<Position> b4 = new List<Position> { B2,A4,C4 };
+                    List<Position> b4 = new List<Position> { B2,A4,C4,B6 };
                     ret = b4;                  
                     break;                     
                                                
                 case "B6":                     
-                    List<Position> b6 = new List<Position> { B4,C5,D6 };
+                    List<Position> b6 = new List<Position> { B4,C5,D6,A7 };
                     ret = b6;                  
                     break;                     
                                                
@@ -194,7 +194,7 @@ namespace Morabaraba2.Data
                     break;                     
                                                
                 case "D2":                     
-                    List<Position> d2 = new List<Position> { D1,F2,D3 };
+                    List<Position> d2 = new List<Position> { D1,F2,D3,B2 };
                     ret = d2;                  
                     break;                     
                                                
@@ -209,7 +209,7 @@ namespace Morabaraba2.Data
                     break;                    
                                               
                 case "D6":                     
-                    List<Position> d6 = new List<Position> { D5,F6,D7 };
+                    List<Position> d6 = new List<Position> { D5,F6,D7,B6 };
                     ret = d6;                  
                     break;                     
                                                
@@ -234,17 +234,17 @@ namespace Morabaraba2.Data
                     break;                     
                                                
                 case "F2":                     
-                    List<Position> f2 = new List<Position> { G1,F4,E3 };
+                    List<Position> f2 = new List<Position> { G1,F4,E3,D2 };
                     ret = f2;                  
                     break;                     
                                                
                 case "F4":                       
-                    List<Position> f4 = new List<Position> { F2,G4,F6 };
+                    List<Position> f4 = new List<Position> { F2,G4,F6,E4 };
                     ret = f4;                  
                     break;                    
                                               
                 case "F6":                    
-                    List<Position> f6 = new List<Position> { F4,G7,D6 };
+                    List<Position> f6 = new List<Position> { F4,G7,D6,E5 };
                     ret = f6;                 
                     break;                    
                                               
