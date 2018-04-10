@@ -22,8 +22,18 @@ namespace Morabaraba2.Data
         /// </summary>
         public GameState()  //to be used for quickplay feature
         {
+            //current = new Player("Player 1", ConsoleColor.Red);
+            //opponent = new Player("Player 2", ConsoleColor.Green);
+
+            #region Test code
             current = new Player("Player 1", ConsoleColor.Red);
             opponent = new Player("Player 2", ConsoleColor.Green);
+            current.placedCows = 11;
+            opponent.placedCows = 11;
+            current.deadCows = 9;
+            opponent.deadCows = 9;
+            #endregion
+
             phase = Phase.Placing;
             defaultColor = ConsoleColor.Gray;
         }

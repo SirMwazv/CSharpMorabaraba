@@ -61,7 +61,7 @@ namespace Morabaraba2.Display
             void PrintPlayer(Player x)
             {
                 Console.ForegroundColor = x.playerColor;
-                string HUD = string.Format("{0} --> Placed Cows: {1} \t Dead Cows: {2} ", x.name,x.placedCows,x.deadCows);
+                string HUD = string.Format("{0} --> Placed Cows: {1} \t Dead Cows: {2} Cow State: {3}", x.name,x.placedCows,x.deadCows, x.cowState);
                 Console.WriteLine(HUD);
                 Console.ForegroundColor = state.defaultColor;
             }
