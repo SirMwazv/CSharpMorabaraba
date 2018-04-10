@@ -116,13 +116,15 @@ namespace Morabaraba2.Data
 
                     if (state.current.Cows.Count == 2)
                     {
-                        state.winner = state.opponent;                        
+                        state.winner = state.opponent;
+                        state.phase = Phase.Won;
                         return true;
                     }
 
                     if (state.opponent.Cows.Count == 2)
                     {
                         state.winner = state.current;
+                        state.phase = Phase.Won;
                         return true;
                     }
 
