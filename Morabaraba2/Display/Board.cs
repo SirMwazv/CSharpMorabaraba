@@ -58,11 +58,18 @@ namespace Morabaraba2.Display
                 Console.ForegroundColor = state.defaultColor;
                 Console.Write(String.Format("{0}", board));
             }
+            void PrintPlayer(Player x)
+            {
+                Console.ForegroundColor = x.playerColor;
+                string HUD = string.Format("{0} --> Placed Cows: {1} \t Dead Cows: {2} ", x.name,x.placedCows,x.deadCows);
+                Console.WriteLine(HUD);
+                Console.ForegroundColor = state.defaultColor;
+            }
+
+            PrintPlayer(state.current);
+            PrintPlayer(state.opponent);
             B("\n");
-            Console.Write(String.Format("{0} has {1} cows left", state.current.name, 12-state.current.Cows.Count));
-            B("\n");
-            Console.Write(String.Format("{0} has {1} cows left", state.opponent.name,12- state.opponent.Cows.Count,state.opponent.playerColor)); //After shooting a cow, Cows.Count gets back that cow.
-            B("\n");
+            Console.WriteLine("Game Phase: " + state.phase);
             B("\n");
             B("\n");
             P(A7); B("----------"); P(D7); B("----------"); P(G7);
