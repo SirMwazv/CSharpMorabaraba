@@ -32,6 +32,13 @@ namespace Morabaraba2.Data
             opponent.placedCows = 11;
             current.deadCows = 9;
             opponent.deadCows = 9;
+
+            current.Cows.Add(Position.A7);
+            current.Cows.Add(Position.A4);
+
+            opponent.Cows.Add(Position.B2);
+            opponent.Cows.Add(Position.B4);
+
             #endregion
 
             phase = Phase.Placing;

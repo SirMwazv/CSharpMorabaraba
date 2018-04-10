@@ -163,7 +163,9 @@ namespace Morabaraba2.Data
                         if (state.current.IsFlying() || GetAdjacentPositions(oldPos.pos).Contains(newPos))   //check for flying cows or if cows are adjacent 
                         {
                             //check for and get  mills before adding or removing cows 
+                            state.current.Cows.Remove(oldPos); //temporarily remove old position before checking mills
                             List<Position[]> mills = state.current.GetMills(newPos);
+                            state.current.Cows.Add(oldPos);// add temp removed cow
 
                             state.current.MoveCow(oldPos, newPos);  //move the cows                            
 
